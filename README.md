@@ -21,4 +21,4 @@ run:
 to clean up all the backup files now cluttering your home directory, run
 (BE CAREFUL!):
 
-    rm -rf .*.bak.*
+    rm -rf ~/.*.bak.*
