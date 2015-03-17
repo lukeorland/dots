@@ -37,8 +37,10 @@
         version: master
         accept_hostkey: yes
 
+    # Silly trick: redirect a file as input to Vim so that it gets past the
+    # warning messages
     - name: Install Vim plugins via Vundle
-      shell: yes '' | vim +PluginInstall! +PluginClean +qall
+      shell: vim +PluginInstall! +PluginClean +qall < ansible-install.yml
 
     - command: ./install.sh
       args:
