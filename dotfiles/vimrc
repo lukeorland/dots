@@ -225,6 +225,8 @@ else
   colorscheme default
 endif
 
+set lazyredraw
+
 """"""""""""
 " Git
 " The tree buffer makes it easy to drill down through the directories of your
