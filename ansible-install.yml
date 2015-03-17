@@ -38,9 +38,7 @@
         accept_hostkey: yes
 
     - name: Install Vim plugins via Vundle
-      shell: spawn vim +PluginInstall! +PluginClean! +qall ; send \n
-      args:
-        executable: /usr/bin/expect
+      shell: yes '' | vim +PluginInstall! +PluginClean +qall
 
     - command: ./install.sh
       args:
