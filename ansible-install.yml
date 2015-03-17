@@ -1,0 +1,47 @@
+---
+
+- hosts: localhost
+  sudo: no
+  vars:
+    - dotfiles:
+        - gitconfig
+        - gitignore
+        - vim
+        - vimrc
+        - gvimrc
+        - tmux.conf
+        - zshrc
+    - home_dir: "{{ '~' | expanduser }}"
+
+  tasks:
+    - debug: var=home_dir
+
+    - name: Back up all the files to be updated
+      shell: mv ~/.{{ item }} ~/.{{ item }}.bak.$(date +%s)
+      with_items: dotfiles
+      ignore_errors: yes
+
+    - name: Create dotfile symlinks
+      file:
+        dest: "{{ home_dir }}/.{{ item }}"
+        src: "{{ home_dir }}/.dots/dotfiles/{{ item }}"
+        force: yes
+        backup: yes
+        state: link
+      with_items: dotfiles
+
+    - name: Clone Vundle plugin
+      git:
+        repo: https://github.com/gmarik/Vundle.vim.git
+        dest: "{{ home_dir }}/.vim/bundle/Vundle.vim"
+        version: master
+        accept_hostkey: yes
+
+    - name: Install Vim plugins via Vundle
+      shell: spawn vim +PluginInstall! +PluginClean! +qall ; send \n
+      args:
+        executable: /usr/bin/expect
+
+    - command: ./install.sh
+      args:
+        chdir: "{{ home_dir }}/.vim/bundle/YouCompleteMe"
