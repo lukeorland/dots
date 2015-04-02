@@ -29,3 +29,8 @@ let g:syntastic_python_checkers = ['pylint', 'flake8']
 
 " python.vim plugin
 let python_highlight_all = 1
+
+# Hit F6 to wrap this line after 72 characters
+# (for comment and docstring lines, per PEP-8)
+# http://stackoverflow.com/a/28484482/492631
+nmap <F6> :set textwidth=72<CR>gqj:set textwidth=79<CR>
