@@ -368,7 +368,13 @@ set ruler
 if executable('zsh')
   set shell=zsh\ -l
 else
-  set shell=bash\ -i
+  " FIX: PluginUpdate => git pull: git-sh-setup: No such file or directory in
+  " MacVim (OK in non-GUI version of Vim)
+  if has("gui_macvim")
+    set shell=/bin/bash\ -l
+  else
+    set shell=/bin/bash\ -i
+  endif
 endif
 
 set showcmd
