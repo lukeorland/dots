@@ -80,6 +80,9 @@ let g:syntastic_quiet_messages = {'level': 'warnings'}
 
 Plugin 'tpope/vim-sleuth'
 
+" Java
+Plugin 'denzeljiang/vim-eclim'
+
 " Python
 Plugin 'python_match.vim'
 Plugin 'hynek/vim-python-pep8-indent'
