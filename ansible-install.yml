@@ -11,6 +11,7 @@
         - gvimrc
         - tmux.conf
         - zshrc
+        - ssh/rc
     - home_dir: "{{ '~' | expanduser }}"
 
   tasks:
