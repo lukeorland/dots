@@ -3,5 +3,9 @@ encoding UTF-8
 defscrollback 10000
 altscreen on
 
-# https://gist.github.com/martijnvermaat/8070533#fixing-agent-forwarding-with-screen
+# Fix agent forwarding
+# https://gist.github.com/martijnvermaat/8070533
+# http://techblog.appnexus.com/2011/managing-ssh-sockets-in-gnu-screen/
+# See .ssh/rc for socket linking
+unsetenv SSH_AUTH_SOCK
 setenv SSH_AUTH_SOCK $HOME/.ssh/ssh_auth_sock
