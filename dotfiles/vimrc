@@ -90,6 +90,12 @@ Plugin 'denzeljiang/vim-eclim'
 Plugin 'python_match.vim'
 Plugin 'hynek/vim-python-pep8-indent'
 
+Plugin 'jmcantrell/vim-virtualenv'
+let g:airline#extensions#virtualenv#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+
 " Markdown
 Plugin 'tpope/vim-markdown'
 "Plugin 'jtratner/vim-flavored-markdown'
