@@ -519,3 +519,13 @@ source ~/.vim/functions/scratch_toggle.vim
 
 au BufWinEnter *.txt setlocal nolist linebreak
 au BufNewFile,BufReadPost *.html setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+
+" Fix when syntax highlighting gets confused and inverts comment highlighting:
+" https://github.com/vim-pandoc/vim-pandoc-syntax/issues/18#issuecomment-28363411
+"syntax clear
+"syntax sync minlines=100
+"setlocal conceallevel=2
+"syntax spell toplevel
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
