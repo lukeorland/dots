@@ -1,0 +1,15 @@
+snippet bashscript
+#! /usr/bin/env bash
+
+	N()
+	{
+		echo "$1" 1>&2
+		exit 1
+	}
+	
+	# get the location of this script and cd in to it.
+	DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" || N 'fail'
+	cd "$DIR" || N 'fail'
+	
+	exit 0
+extends sh
