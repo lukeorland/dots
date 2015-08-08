@@ -65,6 +65,7 @@ Plugin 'honza/vim-snippets'
 let g:ultisnips_python_style="sphinx"
 
 Plugin 'scrooloose/syntastic'
+nmap <leader>sc :SyntasticCheck<CR>
 "let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['ruby', 'python'], 'passive_filetypes': ['html', 'css', 'slim'] }
 let g:syntastic_check_on_open = 1
 let g:syntastic_aggregate_errors = 1
@@ -81,7 +82,6 @@ let g:syntastic_auto_jump=0
 "let g:syntastic_quiet_messages = {'level': 'warnings'}
 let g:syntastic_check_on_wq = 0
 let g:syntastic_always_populate_loc_list = 1
-nmap <leader>sc :SyntasticCheck<CR>
 
 Plugin 'tpope/vim-sleuth'
 
