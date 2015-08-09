@@ -138,8 +138,6 @@ Plugin 'xolox/vim-session'
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
-Plugin 'tpope/vim-dispatch'
-
 """"""""""""
 " Search
 Plugin 'rking/ag.vim'
