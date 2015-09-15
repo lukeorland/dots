@@ -42,6 +42,8 @@ Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-dispatch'
 
+Plugin 'airblade/vim-gitgutter'
+
 " There's an intentional extra space at the endo of the next line.
 nmap <leader>g :Ggrep 
 " ,f for global git search for word under the cursor (with highlight)
