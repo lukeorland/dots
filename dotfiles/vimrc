@@ -64,7 +64,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
-let g:ultisnips_python_style="sphinx"
+let g:ultisnips_python_style="google"
 
 Plugin 'scrooloose/syntastic'
 nmap <leader>sc :SyntasticCheck<CR>
