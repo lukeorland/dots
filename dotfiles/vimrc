@@ -95,6 +95,16 @@ Plugin 'denzeljiang/vim-eclim'
 Plugin 'python_match.vim'
 Plugin 'hynek/vim-python-pep8-indent'
 
+Plugin 'davidhalter/jedi-vim'
+let g:jedi#completions_enabled = 0
+let g:jedi#goto_command = "\\d"
+let g:jedi#goto_assignments_command = "\\g"
+let g:jedi#goto_definitions_command = "\\f"
+let g:jedi#documentation_command = "\\k"
+let g:jedi#usages_command = "\\n"
+"let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>r"
+
 Plugin 'jmcantrell/vim-virtualenv'
 let g:airline#extensions#virtualenv#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
