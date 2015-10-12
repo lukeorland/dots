@@ -182,10 +182,12 @@ Plugin 'nelstrom/vim-visual-star-search'
 " Vim Improvements
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'sjl/gundo.vim'
+Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-speeddating'
 Plugin 'godlygeek/tabular'
 Plugin 'mtth/scratch.vim'
 
@@ -225,8 +227,6 @@ Plugin 'jby/tmux.vim'
 """"""""""""
 " Coding
 Plugin 'Valloric/YouCompleteMe'
-
-Plugin 'tpope/vim-endwise'
 let g:ycm_filepath_completion_use_working_dir = 1
 "let g:ycm_server_keep_logfiles = 1
 "let g:ycm_server_log_level = 'debug'
@@ -243,8 +243,6 @@ let g:ycm_filetype_blacklist = {
       \ 'mail' : 1,
       \ 'python': 1
       \}
-
-Plugin 'tpope/vim-endwise'
 
 Plugin 'majutsushi/tagbar'
 nmap \t :TagbarToggle<CR>
