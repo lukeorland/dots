@@ -122,10 +122,11 @@ Plugin 'tpope/vim-markdown'
 """"""""""""
 " Project
 Plugin 'scrooloose/nerdtree'
-let NERDTreeIgnore = ['\.pyc$']
+let g:NERDTreeIgnore = ['\.pyc$']
+let g:NERDTreeQuitOnOpen = 1
 " Make nerdtree look nice:
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeDirArrows = 1
 let g:NERDTreeWinSize = 30
 
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -136,7 +137,7 @@ let g:nerdtree_tabs_open_on_gui_startup = 0
 let g:nerdtree_tabs_focus_on_files = 1
 " Don't unfocus NERDTree when leaving a tab for descriptive tab names
 let g:nerdtree_tabs_meaningful_tab_names = 0
-map <leader>n <plug>NERDTreeTabsToggle<CR>
+map <leader>n <plug>NERDTreeMirrorToggle<CR>
 
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_working_path_mode = ''
