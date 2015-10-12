@@ -47,7 +47,8 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 export WORKON_HOME="$HOME/.virtualenvs"
-plugins=(git pyenv rbenv taskwarrior tmux virtualenvwrapper)
+#plugins=(git pyenv rbenv taskwarrior tmux virtualenvwrapper)
+plugins=(git homebrew pip tmux vagrant virtualenvwrapper)
 
 # User configuration
 
@@ -82,3 +83,14 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 ZSH_THEME="steeef"
 DISABLE_AUTO_UPDATE="true"
+
+export HOMEBREW_GITHUB_API_TOKEN=8eb9f4c23b71db251e0d10cb50192158fe8e1c0b
+
+
+# Where pip wheel should store built packages.
+export WHEELHOUSE=~/.cache/wheelhouse
+# Install wheels only from the wheelhouse.
+alias pipwhl='pip install --no-index --find-links="$WHEELHOUSE"'
+# Build a wheel from PyPI and put it in the wheelhouse.
+# The --find-links option is necessary so that it doesn't rebuild things.
+alias pipwhlmk='pip wheel --wheel-dir="$WHEELHOUSE" --find-links="$WHEELHOUSE"'
