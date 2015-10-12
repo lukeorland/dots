@@ -89,7 +89,7 @@ Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'tpope/vim-sleuth'
 
 " Java
-Plugin 'denzeljiang/vim-eclim'
+"Plugin 'denzeljiang/vim-eclim'
 
 " Python
 Plugin 'python_match.vim'
