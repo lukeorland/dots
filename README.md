@@ -16,7 +16,7 @@ clone:
 run:
 
     cd ~/.dots
-    ansible-playbook ansible-install.yml
+    make install
 
 to clean up all the backup files now cluttering your home directory, run
 (BE CAREFUL!):
