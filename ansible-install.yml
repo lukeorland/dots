@@ -44,6 +44,7 @@
     - name: Install Vim plugins via Vundle
       shell: vim +PluginInstall! +PluginClean +qall < ansible-install.yml
 
-    - command: ./install.sh
+    - name: Build YouCompleteMe
+      command: ./install.py
       args:
         chdir: "{{ home_dir }}/.vim/bundle/YouCompleteMe"
