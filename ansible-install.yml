@@ -9,6 +9,7 @@
         - vim
         - vimrc
         - gvimrc
+        - spacemacs
         - tmux.conf
         - zshrc
         - ssh/rc
