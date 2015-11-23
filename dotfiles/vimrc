@@ -226,24 +226,24 @@ Plugin 'jby/tmux.vim'
 
 """"""""""""
 " Coding
-Plugin 'Valloric/YouCompleteMe'
-let g:ycm_filepath_completion_use_working_dir = 1
-"let g:ycm_server_keep_logfiles = 1
-"let g:ycm_server_log_level = 'debug'
-let g:ycm_filetype_blacklist = {
-      \ 'tagbar' : 1,
-      \ 'qf' : 1,
-      \ 'notes' : 1,
-      \ 'markdown' : 1,
-      \ 'unite' : 1,
-      \ 'text' : 1,
-      \ 'vimwiki' : 1,
-      \ 'pandoc' : 1,
-      \ 'infolog' : 1,
-      \ 'mail' : 1,
-      \ 'python': 1
-      \}
-
+" Plugin 'Valloric/YouCompleteMe'
+" let g:ycm_filepath_completion_use_working_dir = 1
+" "let g:ycm_server_keep_logfiles = 1
+" "let g:ycm_server_log_level = 'debug'
+" let g:ycm_filetype_blacklist = {
+"       \ 'tagbar' : 1,
+"       \ 'qf' : 1,
+"       \ 'notes' : 1,
+"       \ 'markdown' : 1,
+"       \ 'unite' : 1,
+"       \ 'text' : 1,
+"       \ 'vimwiki' : 1,
+"       \ 'pandoc' : 1,
+"       \ 'infolog' : 1,
+"       \ 'mail' : 1,
+"       \ 'python': 1
+"       \}
+"
 Plugin 'majutsushi/tagbar'
 nmap \t :TagbarToggle<CR>
 
