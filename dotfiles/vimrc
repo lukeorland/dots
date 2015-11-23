@@ -152,6 +152,8 @@ Plugin 'xolox/vim-session'
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
+Plugin 'rizzatti/dash.vim'
+
 """"""""""""
 " Search
 Plugin 'rking/ag.vim'
