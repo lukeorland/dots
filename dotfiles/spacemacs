@@ -23,25 +23,43 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     ansible
      auto-completion
      better-defaults
-     company-mode
+     clojure
+     ;; company-mode
+     dash
+     django
+     dockerfile
      emacs-lisp
      eyebrowse
      git
      github
+     ipython-notebook
+     javascript
      markdown
      org
      osx
+     pandoc
      ;; perspectives  ;; (using eyebrowse instead)
-     (python :variables
-             python-enable-yapf-format-on-save t)
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     ;; spell-checking
+     python
+     ;; (python :variables
+     ;;         python-enable-yapf-format-on-save t)
+     (shell :variables
+            shell-default-height 30
+            shell-default-position 'bottom
+            shell-default-term-shell "/usr/local/bin/zsh"
+            shell-default-shell 'eshell
+            )
+     ;; restclient
+     spell-checking
+     search-engine
+     ;; spotify   ;; won't compile 2015-10-18
      syntax-checking
+     unimpaired
      version-control
+     yaml
+     ;; ycmd
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -205,6 +223,16 @@ user code."
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
+
+  ;; Make underscore count as a word character in Python mode.
+  ;; (modify-syntax-entry ?_ "w")
+  (with-eval-after-load 'python
+   ;; (modify-syntax-entry ?_ "w" python-mode-syntax-table)
+   (modify-syntax-entry ?_ "w"))
+  (setq powerline-default-separator 'nil)
+  (setq browse-url-browser-function 'browse-url-generic
+        engine/browser-function 'browse-url-generic
+        browse-url-generic-program "google-chrome")
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
