@@ -29,29 +29,36 @@ values."
      clojure
      ;; company-mode
      dash
-     django
      dockerfile
      emacs-lisp
      eyebrowse
+
      git
      github
-     ipython-notebook
+
      javascript
      markdown
      org
      osx
      pandoc
      ;; perspectives  ;; (using eyebrowse instead)
+
+     django
+     ipython-notebook
      python
      ;; (python :variables
      ;;         python-enable-yapf-format-on-save t)
+
+     ;; restclient
+
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom
-            shell-default-term-shell "/usr/local/bin/zsh"
+            shell-default-term-shell "zsh")
+            ;; shell-default-shell 'multi-term
             shell-default-shell 'eshell
             )
-     ;; restclient
+
      spell-checking
      search-engine
      ;; spotify   ;; won't compile 2015-10-18
