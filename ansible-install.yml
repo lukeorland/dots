@@ -16,6 +16,18 @@
     - home_dir: "{{ '~' | expanduser }}"
 
   tasks:
+    - name: oh-my-zsh and spacemacs
+      git:
+        repo: "{{ item.repo }}"
+        dest: "{{ item.dest }}"
+        version: master
+        accept_hostkey: yes
+      with_items:
+        - repo: git://github.com/robbyrussell/oh-my-zsh.git
+          dest: ~/.oh-my-zsh
+        - repo: https://github.com/syl20bnr/spacemacs
+          dest: ~/.emacs.d
+
     - debug: var=home_dir
 
     - name: Back up all the files to be updated

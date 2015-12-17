@@ -236,11 +236,27 @@ layers configuration. You are free to put any user code."
   ;; (modify-syntax-entry ?_ "w")
   (with-eval-after-load 'python
    ;; (modify-syntax-entry ?_ "w" python-mode-syntax-table)
-   (modify-syntax-entry ?_ "w"))
+    (modify-syntax-entry ?_ "w")
+    ;; (setenv "LC_CTYPE" "UTF-8")
+    (setenv "LANG" "en_US.UTF-8")
+    (setenv "LC_ALL" "en_US.UTF-8")
+    (defun my-python-start-or-switch-repl (&optional msg)
+      "Start and/or switch to the REPL."
+      (interactive "p")
+      (if (python-shell-get-process)
+          (python-shell-switch-to-shell)
+        (progn
+          (run-python)
+          (python-shell-switch-to-shell)
+          )
+        )
+      )
+    )
   (setq powerline-default-separator 'nil)
-  (setq browse-url-browser-function 'browse-url-generic
-        engine/browser-function 'browse-url-generic
-        browse-url-generic-program "google-chrome")
+  ;; (setq browse-url-browser-function 'browse-url-generic
+  ;;       engine/browser-function 'browse-url-generic
+  ;;       browse-url-generic-program "google-chrome")
+  (setq vc-follow-symlinks t)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will

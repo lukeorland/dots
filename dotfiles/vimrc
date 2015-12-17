@@ -1,3 +1,5 @@
+scriptencoding utf-8
+set encoding=utf-8
 set nocompatible
 filetype off
 
@@ -381,7 +383,8 @@ set list
 " Don't redraw while executing macros
 set nolazyredraw
 
-set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:␣
+"set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:␣
+set listchars=tab:>-,trail:.,precedes:<,extends:>
 set showbreak=↪
 
 set notimeout
