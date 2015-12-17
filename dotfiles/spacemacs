@@ -28,6 +28,7 @@ values."
      better-defaults
      clojure
      ;; company-mode
+     chrome
      dash
      dockerfile
      emacs-lisp
@@ -54,11 +55,11 @@ values."
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom
-            shell-default-term-shell "zsh"
-            ;; shell-default-shell 'multi-term
-            shell-default-shell 'eshell
+            shell-default-term-shell "/usr/local/bin/zsh"
+            shell-default-shell 'shell
             )
-
+     ;; restclient
+     spacemacs-layouts
      spell-checking
      search-engine
      ;; spotify   ;; won't compile 2015-10-18
