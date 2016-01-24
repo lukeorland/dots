@@ -98,7 +98,11 @@ Plugin 'python_match.vim'
 Plugin 'hynek/vim-python-pep8-indent'
 
 Plugin 'davidhalter/jedi-vim'
-let g:jedi#completions_enabled = 1
+autocmd FileType python setlocal omnifunc=jedi#completions
+" Use neocomplete instead
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+
 let g:jedi#goto_command = "\\d"
 let g:jedi#goto_assignments_command = "\\g"
 let g:jedi#goto_definitions_command = "\\f"
@@ -106,6 +110,14 @@ let g:jedi#documentation_command = "\\k"
 let g:jedi#usages_command = "\\n"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
+
+Plugin 'Shougo/neocomplete'
+let g:neocomplete#enable_at_startup = 1
+
+if !exists('g:neocomplete#force_omni_input_patterns')
+        let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 
 Plugin 'jmcantrell/vim-virtualenv'
 let g:airline#extensions#virtualenv#enabled = 1
