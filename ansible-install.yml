@@ -6,6 +6,7 @@
     - dotfiles:
         - gitconfig
         - gitignore
+        - nvmrc
         - vim
         - vimrc
         - gvimrc
