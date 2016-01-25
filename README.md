@@ -4,8 +4,6 @@
 
 - git
 - ansible
-- dependencies of
-  [YouCompleteMe](https://github.com/Valloric/YouCompleteMe#installation)
 
 ## install
 
