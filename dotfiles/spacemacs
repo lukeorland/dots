@@ -305,6 +305,7 @@ layers configuration. You are free to put any user code."
   ;;       engine/browser-function 'browse-url-generic
   ;;       browse-url-generic-program "google-chrome")
   (setq vc-follow-symlinks t)
+  (setq neo-show-hidden-files nil)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
