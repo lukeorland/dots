@@ -135,8 +135,3 @@
   enabled = true
 [include]
   path = .gitconfig.user
-[credential]
-	helper = osxkeychain
-[github]
-	user = lukeorland
-	password = eEaMl7Oqsk7JSL9Z
