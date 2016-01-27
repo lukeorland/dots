@@ -135,3 +135,7 @@
   enabled = true
 [include]
   path = .gitconfig.user
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
