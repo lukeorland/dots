@@ -47,7 +47,7 @@ ZSH_CUSTOM=~/.zsh_custom
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 export WORKON_HOME="$HOME/.virtualenvs"
-plugins=(git homebrew pip tmux vagrant virtualenvwrapper)
+plugins=(emacs git homebrew pip tmux vagrant virtualenvwrapper)
 
 # User configuration
 
