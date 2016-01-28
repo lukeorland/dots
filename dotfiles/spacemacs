@@ -283,23 +283,19 @@ layers configuration. You are free to put any user code."
   ;; Make underscore count as a word character in Python mode.
   ;; (modify-syntax-entry ?_ "w")
   (with-eval-after-load 'python
-   ;; (modify-syntax-entry ?_ "w" python-mode-syntax-table)
-    (modify-syntax-entry ?_ "w")
-    ;; (setenv "LC_CTYPE" "UTF-8")
-    (setenv "LANG" "en_US.UTF-8")
-    (setenv "LC_ALL" "en_US.UTF-8")
+    (modify-syntax-entry ?_ "w" python-mode-syntax-table)
     (defun my-python-start-or-switch-repl (&optional msg)
       "Start and/or switch to the REPL."
       (interactive "p")
       (if (python-shell-get-process)
-          (python-shell-switch-to-shell)
-        (progn
-          (run-python)
-          (python-shell-switch-to-shell)
-          )
-        )
+        (run-python)
+        (python-shell-switch-to-shell)
       )
     )
+  )
+  ;; (setenv "LC_CTYPE" "UTF-8")
+  (setenv "LANG" "en_US.UTF-8")
+  (setenv "LC_ALL" "en_US.UTF-8")
   (setq powerline-default-separator 'nil)
   ;; (setq browse-url-browser-function 'browse-url-generic
   ;;       engine/browser-function 'browse-url-generic
