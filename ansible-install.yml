@@ -4,8 +4,10 @@
   sudo: no
   vars:
     - dotfiles:
+        - boot
         - gitconfig
         - gitignore
+        - lein
         - nvmrc
         - vim
         - vimrc
