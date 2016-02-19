@@ -7,6 +7,7 @@
         - boot
         - gitconfig
         - gitignore
+        - jsbeautifyrc
         - lein
         - nvmrc
         - vim
