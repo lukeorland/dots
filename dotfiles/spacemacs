@@ -280,6 +280,7 @@ in `dotspacemacs/user-config'."
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
+  (remove-hook 'python-mode-hook 'spacemacs//init-eldoc-python-mode)
   ;; Make underscore count as a word character in Python mode.
   ;; (modify-syntax-entry ?_ "w")
   (with-eval-after-load 'python
