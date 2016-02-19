@@ -34,8 +34,8 @@
 
     - debug: var=home_dir
 
-    - name: Back up all the files to be updated
-      shell: mv ~/.{{ item }} ~/.{{ item }}.bak.$(date +%s)
+    - name: Back up all the files to be updated if they are not already symlinks
+      shell: test -f {{ item }} && mv ~/.{{ item }} ~/.{{ item }}.bak.$(date +%s)
       with_items: dotfiles
       ignore_errors: yes
 
