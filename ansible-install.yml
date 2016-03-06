@@ -9,6 +9,7 @@
         - gitignore
         - jsbeautifyrc
         - lein
+        - matplotlib
         - nvmrc
         - vim
         - vimrc
