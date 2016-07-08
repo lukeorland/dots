@@ -1,0 +1,12 @@
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+export PYENV_ROOT=$(brew --prefix pyenv)
+
+export NVM_DIR=$HOME/.nvm
+source $(brew --prefix nvm)/nvm.sh
+
+# Where pip wheel should store built packages.
+export WHEELHOUSE=~/.cache/wheelhouse
+
+export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"

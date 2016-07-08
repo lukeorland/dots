@@ -17,6 +17,7 @@
         - spacemacs
         - tmux.conf
         - zshrc
+        - zshenv
         - ssh/rc
     - home_dir: "{{ '~' | expanduser }}"
 
