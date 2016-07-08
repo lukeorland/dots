@@ -381,7 +381,7 @@ layers configuration. You are free to put any user code."
  '(custom-safe-themes
    (quote
     ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default)))
- '(magit-commit-arguments (quote ("--verbose")))
+ '(magit-commit-arguments nil)
  '(paradox-github-token t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
