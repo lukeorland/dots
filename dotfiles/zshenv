@@ -2,10 +2,12 @@ export PATH=/usr/local/bin:$PATH
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-export PYENV_ROOT=$(brew --prefix pyenv)
+#export PYENV_ROOT=$(brew --prefix pyenv)
+export PYENV_ROOT=/usr/local/opt/pyenv
 
 export NVM_DIR=$HOME/.nvm
-source $(brew --prefix nvm)/nvm.sh
+#source $(brew --prefix nvm)/nvm.sh
+source /usr/local/opt/nvm/nvm.sh
 
 # Where pip wheel should store built packages.
 export WHEELHOUSE=~/.cache/wheelhouse
