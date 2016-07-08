@@ -7,6 +7,12 @@
 ;;   https://github.com/syl20bnr/spacemacs/issues/6533
 ;;
 ;; - emoji rendering but showing first colon in org files
+;;
+;; - c-i conflict while editing a Python file. I want it to call
+;; `evil-jump-forward', but instead it tries some auto-completion, with the
+;; error message:
+;;
+;; python-completion-complete-at-point: Completion needs an inferior Python process running
 
 ;; Try:
 ;; - improve gqq formatting in Python (to use yapf?)
