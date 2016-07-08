@@ -57,16 +57,16 @@ vmap <leader>f y:let @/=escape(@", '\\[]$^*.')<CR>:set hls<CR>:silent Ggrep -F "
 " Languages
 Plugin 'sheerun/vim-polyglot'
 
-Plugin 'SirVer/ultisnips'
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-" If you want :UltiSnipsEdit to split your window:
-let g:UltiSnipsEditSplit="vertical"
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
-let g:ultisnips_python_style="google"
+"Plugin 'SirVer/ultisnips'
+"" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+"let g:UltiSnipsExpandTrigger="<c-j>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"" If you want :UltiSnipsEdit to split your window:
+"let g:UltiSnipsEditSplit="vertical"
+"" Snippets are separated from the engine. Add this if you want them:
+"Plugin 'honza/vim-snippets'
+"let g:ultisnips_python_style="google"
 
 Plugin 'scrooloose/syntastic'
 nmap <leader>sc :w \| :SyntasticCheck<CR>
@@ -100,30 +100,30 @@ Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'davidhalter/jedi-vim'
 autocmd FileType python setlocal omnifunc=jedi#completions
 " Use neocomplete instead
-let g:jedi#completions_enabled = 0
-let g:jedi#auto_vim_configuration = 0
+"let g:jedi#completions_enabled = 0
+"let g:jedi#auto_vim_configuration = 0
+"
+"let g:jedi#goto_command = "\\d"
+"let g:jedi#goto_assignments_command = "\\g"
+"let g:jedi#goto_definitions_command = "\\f"
+"let g:jedi#documentation_command = "\\k"
+"let g:jedi#usages_command = "\\n"
+"let g:jedi#completions_command = "<C-Space>"
+"let g:jedi#rename_command = "<leader>r"
 
-let g:jedi#goto_command = "\\d"
-let g:jedi#goto_assignments_command = "\\g"
-let g:jedi#goto_definitions_command = "\\f"
-let g:jedi#documentation_command = "\\k"
-let g:jedi#usages_command = "\\n"
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#rename_command = "<leader>r"
+"Plugin 'Shougo/neocomplete'
+"let g:neocomplete#enable_at_startup = 1
 
-Plugin 'Shougo/neocomplete'
-let g:neocomplete#enable_at_startup = 1
+"if !exists('g:neocomplete#force_omni_input_patterns')
+"        let g:neocomplete#force_omni_input_patterns = {}
+"endif
+"let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 
-if !exists('g:neocomplete#force_omni_input_patterns')
-        let g:neocomplete#force_omni_input_patterns = {}
-endif
-let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-
-Plugin 'jmcantrell/vim-virtualenv'
-let g:airline#extensions#virtualenv#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline#extensions#syntastic#enabled = 1
-let g:airline#extensions#branch#enabled = 1
+"Plugin 'jmcantrell/vim-virtualenv'
+"let g:airline#extensions#virtualenv#enabled = 1
+"let g:airline#extensions#tagbar#enabled = 1
+"let g:airline#extensions#syntastic#enabled = 1
+"let g:airline#extensions#branch#enabled = 1
 
 " Markdown
 Plugin 'tpope/vim-markdown'
@@ -232,7 +232,6 @@ Plugin 'kristijanhusak/vim-multiple-cursors'
 "Plugin 'Raimondi/delimitMate'
 "Plugin 'tpope/vim-abolish'
 "Plugin 'tpope/vim-ragtag'
-"Plugin 'Shougo/neocomplete'
 "Plugin 'skwp/YankRing.vim'
 
 """"""""""""
