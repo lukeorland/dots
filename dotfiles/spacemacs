@@ -6,11 +6,48 @@
 ;; - separate macOS clipboard from yankring
 ;;   https://github.com/syl20bnr/spacemacs/issues/6533
 ;;
-;; - emoji rendering in org files
+;; - emoji rendering but showing first colon in org files
 
 ;; Try:
 ;; - improve gqq formatting in Python (to use yapf?)
 
+;; Necessary?
+;; (defvar company-mode/enable-yas t
+;;   "Enable yasnippet for all backends.")
+;; (defun company-mode/backend-with-yas (backend)
+;;   (if (or (not company-mode/enable-yas) (and (listp backend) (member 'company-yasnippet backend)))
+;;       backend
+;;     (append (if (consp backend) backend (list backend))
+;;             '(:with company-yasnippet))))
+;; (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
+;; (defun xah-toggle-line-spacing ()
+;;   "Toggle line spacing between no extra space to extra half line height."
+;;   (interactive)
+;;   (if (eq line-spacing nil)
+;;       (setq line-spacing 0.2) ; add 0.5 height between lines
+;;     (setq line-spacing nil)   ; no extra heigh between lines
+;;     )
+;;   (redraw-frame (selected-frame)))
+;; (require 'pyenv-mode)
+;; (defun projectile-pyenv-mode-set ()
+;;   "Set pyenv version matching project name."
+;;   (let ((project (projectile-project-name)))
+;;     (if (member project (pyenv-mode-versions))
+;;         (pyenv-mode-set project)
+;;       (pyenv-mode-unset))))
+;; (with-eval-after-load 'python
+;;   ;; (remove-hook 'python-mode-hook #'python-setup-shell)
+;;   (add-hook 'projectile-switch-project-hook 'projectile-pyenv-mode-set))
+;; (remove-hook 'python-mode-hook 'spacemacs//init-eldoc-python-mode)
+;; ;; (modify-syntax-entry ?_ "w")
+;;   (defun my-python-start-or-switch-repl (&optional msg)
+;;     "Start and/or switch to the REPL."
+;;     (interactive "p")
+;;     (if (python-shell-get-process)
+;;       (run-python)
+;;       (python-shell-switch-to-shell)
+;;     )
+;;   )
 
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
@@ -105,7 +142,8 @@ values."
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'. (default t)
-   dotspacemacs-delete-orphan-packages t))
+   dotspacemacs-delete-orphan-packages t)
+  )
 
 (defun dotspacemacs/init ()
   "Initialization function.
@@ -290,7 +328,8 @@ values."
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
    dotspacemacs-whitespace-cleanup 'changed
-   ))
+   )
+  )
 
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
@@ -301,33 +340,6 @@ in `dotspacemacs/user-config'."
   (fringe-mode '(1 . 1))
 
   (shell-dirtrack-mode nil)
-
-  (require 'pyenv-mode)
-  (defun projectile-pyenv-mode-set ()
-    "Set pyenv version matching project name."
-    (let ((project (projectile-project-name)))
-      (if (member project (pyenv-mode-versions))
-          (pyenv-mode-set project)
-        (pyenv-mode-unset))))
-
-  ;; ;; (defvar company-mode/enable-yas t
-  ;; ;;   "Enable yasnippet for all backends.")
-
-  ;; ;; (defun company-mode/backend-with-yas (backend)
-  ;; ;;   (if (or (not company-mode/enable-yas) (and (listp backend) (member 'company-yasnippet backend)))
-  ;; ;;       backend
-  ;; ;;     (append (if (consp backend) backend (list backend))
-  ;; ;;             '(:with company-yasnippet))))
-
-  ;; ;; (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
-  ;; (defun xah-toggle-line-spacing ()
-  ;;   "Toggle line spacing between no extra space to extra half line height."
-  ;;   (interactive)
-  ;;   (if (eq line-spacing nil)
-  ;;       (setq line-spacing 0.2) ; add 0.5 height between lines
-  ;;     (setq line-spacing nil)   ; no extra heigh between lines
-  ;;     )
-  ;;   (redraw-frame (selected-frame)))
   )
 
 (defun dotspacemacs/user-config ()
@@ -344,41 +356,19 @@ layers configuration. You are free to put any user code."
 
   ;; Python ;;
   (with-eval-after-load 'python
-    ;; Make underscore count as a word character in Python mode.
+    ;; Make underscore count as a word character in Python mode:
     (modify-syntax-entry ?_ "w" python-mode-syntax-table))
 
-  ;; (with-eval-after-load 'python
-  ;;   ;; (remove-hook 'python-mode-hook #'python-setup-shell)
-  ;;   (add-hook 'projectile-switch-project-hook 'projectile-pyenv-mode-set))
+  (with-eval-after-load 'org
+    (add-hook 'org-mode-hook 'emoji-cheat-sheet-plus-display-mode)
+    )
 
-  ;; (remove-hook 'python-mode-hook 'spacemacs//init-eldoc-python-mode)
-  ;; ;; (modify-syntax-entry ?_ "w")
+  (setenv "LANG" "en_US.UTF-8")
+  (setenv "LC_ALL" "en_US.UTF-8")
 
+  (setq vc-follow-symlinks t)
 
-  ;;   (defun my-python-start-or-switch-repl (&optional msg)
-  ;;     "Start and/or switch to the REPL."
-  ;;     (interactive "p")
-  ;;     (if (python-shell-get-process)
-  ;;       (run-python)
-  ;;       (python-shell-switch-to-shell)
-  ;;     )
-  ;;   )
-
-  ;; ;; (with-eval-after-load 'org
-  ;; ;;   (add-hook 'org-mode-hook 'emoji-cheat-sheet-plus-display-mode)
-  ;; ;;   )
-
-  ;; )
-  ;; ;; (setenv "LC_CTYPE" "UTF-8")
-  ;; (setenv "LANG" "en_US.UTF-8")
-  ;; (setenv "LC_ALL" "en_US.UTF-8")
-  ;; ;; (setq browse-url-browser-function 'browse-url-generic
-  ;; ;;       engine/browser-function 'browse-url-generic
-  ;; ;;       browse-url-generic-program "google-chrome")
-  ;; (setq vc-follow-symlinks t)
-  ;; (setq neo-show-hidden-files nil)
-  ;; ;; (setq multi-term-program "/usr/local/bin/zsh")
-  ;; (setq deft-extensions '("org" "md" "txt"))
+  (setq neo-show-hidden-files nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -391,13 +381,12 @@ layers configuration. You are free to put any user code."
  '(custom-safe-themes
    (quote
     ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default)))
- '(paradox-github-token t)
- )
+ '(magit-commit-arguments (quote ("--verbose")))
+ '(paradox-github-token t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
- )
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
