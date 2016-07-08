@@ -13,6 +13,9 @@
 ;; error message:
 ;;
 ;; python-completion-complete-at-point: Completion needs an inferior Python process running
+;;
+;; - isort
+;;   https://github.com/syl20bnr/spacemacs/pull/3701
 
 ;; Try:
 ;; - improve gqq formatting in Python (to use yapf?)
