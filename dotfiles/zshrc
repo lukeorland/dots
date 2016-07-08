@@ -1,3 +1,4 @@
+source ~/.zshenv
 export HOSTNAME=$HOST
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -21,7 +22,7 @@ DISABLE_AUTO_UPDATE="false"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -42,12 +43,13 @@ HIST_STAMPS="yyyy-mm-dd"
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=~/.zsh_custom
 
+# Define EDITOR before plugins so the emacs plugin doesn't change it.
+export EDITOR='vim'
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-export WORKON_HOME="$HOME/.virtualenvs"
-plugins=(bgnotify emacs git homebrew pip tmux vagrant virtualenvwrapper)
+plugins=(bgnotify git homebrew pip tmux vagrant pyenv)
 
 # User configuration
 
@@ -65,8 +67,6 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
-export NVM_DIR=~/.nvm
-. $(brew --prefix nvm)/nvm.sh
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -83,12 +83,27 @@ export NVM_DIR=~/.nvm
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Where pip wheel should store built packages.
-export WHEELHOUSE=~/.cache/wheelhouse
 # Install wheels only from the wheelhouse.
 alias pipwhl='pip install --no-index --find-links="$WHEELHOUSE"'
 # Build a wheel from PyPI and put it in the wheelhouse.
 # The --find-links option is necessary so that it doesn't rebuild things.
 alias pipwhlmk='pip wheel --wheel-dir="$WHEELHOUSE" --find-links="$WHEELHOUSE"'
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Custom Aliases
+tmux-attach () {
+    tmux attach-session -dt $1 || tmux new-session -s $1
+}
+
+spotidoro-work () {
+    osascript -e 'tell application "Spotify" to play'
+    sleep 1500
+    osascript -e 'tell application "Spotify" to pause'
+}
+
+spotidoro-break () {
+    osascript -e 'tell application "Spotify" to pause'
+    sleep 300
+    osascript -e 'tell application "Spotify" to play'
+}
