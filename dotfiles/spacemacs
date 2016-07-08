@@ -2,6 +2,16 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
+;; Fix:
+;; - separate macOS clipboard from yankring
+;;   https://github.com/syl20bnr/spacemacs/issues/6533
+;;
+;; - emoji rendering in org files
+
+;; Try:
+;; - improve gqq formatting in Python (to use yapf?)
+
+
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
 You should not put any user code in this function besides modifying the variable
@@ -23,6 +33,7 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     ;; csharp
      ansible
      (auto-completion :variables
                       auto-completion-enable-snippets-in-popup t)
@@ -31,11 +42,12 @@ values."
      clojure
      java
 
-     ;; company-mode
+     company-mode
      chrome
      dash
      dockerfile
      emacs-lisp
+     emoji
      eyebrowse
      deft
      markdown
@@ -50,11 +62,12 @@ values."
      html
      javascript
 
-     django
-     ipython-notebook
-     python
-     ;; (python :variables
-     ;;         python-enable-yapf-format-on-save t)
+     ;; django
+     ;; ipython-notebook
+     (python :variables
+             python-auto-set-local-pyenv-version 'on-project-switch
+             ;; python-enable-yapf-format-on-save t
+             )
 
      restclient
 
@@ -62,26 +75,33 @@ values."
             shell-default-height 30
             shell-default-position 'bottom
             shell-default-term-shell "/usr/local/bin/zsh"
-            shell-default-shell 'multi-term
+            shell-default-shell 'shell
             )
-     ;; restclient
      spacemacs-layouts
      spell-checking
      search-engine
      ;; spotify   ;; won't compile 2015-10-18
      syntax-checking
      unimpaired
-     version-control
+     (version-control :variables
+                      version-control-diff-tool 'diff-hl
+                      ;; version-control-global-margin t
+                      )
+
      yaml
      ;; ycmd
+     ;; tmux
      )
+
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '()
+
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
+
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'. (default t)
@@ -134,20 +154,20 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-light
+   dotspacemacs-themes '(monokai
+                         spacemacs-light
                          spacemacs-dark
                          solarized-light
                          solarized-dark
                          leuven
-                         monokai
                          zenburn)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 11
-                               :weight normal
+                               :size 10
+                               :weight light
                                :width normal
                                :powerline-scale 1.1)
    ;; The leader key
@@ -278,24 +298,36 @@ It is called immediately after `dotspacemacs/init'.  You are free to put almost
 any user code here.  The exception is org related code, which should be placed
 in `dotspacemacs/user-config'."
 
-  ;; (defvar company-mode/enable-yas t
-  ;;   "Enable yasnippet for all backends.")
+  (fringe-mode '(1 . 1))
 
-  ;; (defun company-mode/backend-with-yas (backend)
-  ;;   (if (or (not company-mode/enable-yas) (and (listp backend) (member 'company-yasnippet backend)))
-  ;;       backend
-  ;;     (append (if (consp backend) backend (list backend))
-  ;;             '(:with company-yasnippet))))
+  (shell-dirtrack-mode nil)
 
-  ;; (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
-  (defun xah-toggle-line-spacing ()
-    "Toggle line spacing between no extra space to extra half line height."
-    (interactive)
-    (if (eq line-spacing nil)
-        (setq line-spacing 0.5) ; add 0.5 height between lines
-      (setq line-spacing nil)   ; no extra heigh between lines
-      )
-    (redraw-frame (selected-frame)))
+  (require 'pyenv-mode)
+  (defun projectile-pyenv-mode-set ()
+    "Set pyenv version matching project name."
+    (let ((project (projectile-project-name)))
+      (if (member project (pyenv-mode-versions))
+          (pyenv-mode-set project)
+        (pyenv-mode-unset))))
+
+  ;; ;; (defvar company-mode/enable-yas t
+  ;; ;;   "Enable yasnippet for all backends.")
+
+  ;; ;; (defun company-mode/backend-with-yas (backend)
+  ;; ;;   (if (or (not company-mode/enable-yas) (and (listp backend) (member 'company-yasnippet backend)))
+  ;; ;;       backend
+  ;; ;;     (append (if (consp backend) backend (list backend))
+  ;; ;;             '(:with company-yasnippet))))
+
+  ;; ;; (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
+  ;; (defun xah-toggle-line-spacing ()
+  ;;   "Toggle line spacing between no extra space to extra half line height."
+  ;;   (interactive)
+  ;;   (if (eq line-spacing nil)
+  ;;       (setq line-spacing 0.2) ; add 0.5 height between lines
+  ;;     (setq line-spacing nil)   ; no extra heigh between lines
+  ;;     )
+  ;;   (redraw-frame (selected-frame)))
   )
 
 (defun dotspacemacs/user-config ()
@@ -303,31 +335,50 @@ in `dotspacemacs/user-config'."
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
-  (remove-hook 'python-mode-hook 'spacemacs//init-eldoc-python-mode)
-  ;; Make underscore count as a word character in Python mode.
-  ;; (modify-syntax-entry ?_ "w")
+  ;; Gutter/Fringe ;;
+  (setq diff-hl-side 'left)
+
+  ;; Spaceline ;;
+  (setq powerline-default-separator nil)
+  (spaceline-compile)
+
+  ;; Python ;;
   (with-eval-after-load 'python
-    (modify-syntax-entry ?_ "w" python-mode-syntax-table)
-    (defun my-python-start-or-switch-repl (&optional msg)
-      "Start and/or switch to the REPL."
-      (interactive "p")
-      (if (python-shell-get-process)
-        (run-python)
-        (python-shell-switch-to-shell)
-      )
-    )
-  )
-  ;; (setenv "LC_CTYPE" "UTF-8")
-  (setenv "LANG" "en_US.UTF-8")
-  (setenv "LC_ALL" "en_US.UTF-8")
-  (setq powerline-default-separator 'nil)
-  ;; (setq browse-url-browser-function 'browse-url-generic
-  ;;       engine/browser-function 'browse-url-generic
-  ;;       browse-url-generic-program "google-chrome")
-  (setq vc-follow-symlinks t)
-  (setq neo-show-hidden-files nil)
-  ;; (setq multi-term-program "/usr/local/bin/zsh")
-  (setq deft-extensions '("org" "md" "txt"))
+    ;; Make underscore count as a word character in Python mode.
+    (modify-syntax-entry ?_ "w" python-mode-syntax-table))
+
+  ;; (with-eval-after-load 'python
+  ;;   ;; (remove-hook 'python-mode-hook #'python-setup-shell)
+  ;;   (add-hook 'projectile-switch-project-hook 'projectile-pyenv-mode-set))
+
+  ;; (remove-hook 'python-mode-hook 'spacemacs//init-eldoc-python-mode)
+  ;; ;; (modify-syntax-entry ?_ "w")
+
+
+  ;;   (defun my-python-start-or-switch-repl (&optional msg)
+  ;;     "Start and/or switch to the REPL."
+  ;;     (interactive "p")
+  ;;     (if (python-shell-get-process)
+  ;;       (run-python)
+  ;;       (python-shell-switch-to-shell)
+  ;;     )
+  ;;   )
+
+  ;; ;; (with-eval-after-load 'org
+  ;; ;;   (add-hook 'org-mode-hook 'emoji-cheat-sheet-plus-display-mode)
+  ;; ;;   )
+
+  ;; )
+  ;; ;; (setenv "LC_CTYPE" "UTF-8")
+  ;; (setenv "LANG" "en_US.UTF-8")
+  ;; (setenv "LC_ALL" "en_US.UTF-8")
+  ;; ;; (setq browse-url-browser-function 'browse-url-generic
+  ;; ;;       engine/browser-function 'browse-url-generic
+  ;; ;;       browse-url-generic-program "google-chrome")
+  ;; (setq vc-follow-symlinks t)
+  ;; (setq neo-show-hidden-files nil)
+  ;; ;; (setq multi-term-program "/usr/local/bin/zsh")
+  ;; (setq deft-extensions '("org" "md" "txt"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
