@@ -32,6 +32,10 @@
 
   # branch
   b = branch -vv                    # branch (verbose)
+  prune-branches = !git remote prune origin \
+    && git branch -vv \
+    | grep ': gone]' \
+    | awk '{print $1}' | xargs git branch -d
 
   # commit
   c = commit -m                     # commit with message
@@ -63,7 +67,7 @@
   shortnocolor = log --pretty=format:\"%h %cr %cn %s\"
 
   # pull
-  pull = pull --ff-only
+  pull = pull --ff-only --prune
 
   # push
   ps = push                         # push
@@ -139,3 +143,11 @@
 	rebase = true
 [rebase]
 	autoStash = true
+[fetch]
+	prune = true
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[credential]
+	helper = osxkeychain
