@@ -51,19 +51,6 @@
         state: link
       with_items: dotfiles
 
-    ## Vim ##
-    - name: Clone Vundle plugin
-      git:
-        repo: https://github.com/gmarik/Vundle.vim.git
-        dest: "{{ home_dir }}/.vim/bundle/Vundle.vim"
-        version: master
-        accept_hostkey: yes
-
-    # Silly trick: redirect a file as input to Vim so that it gets past the
-    # warning messages
-    - name: Install Vim plugins via Vundle
-      shell: vim +PluginInstall! +PluginClean +qall < ansible-install.yml
-
     ## NVim ##
     - name: Create nvim autoload dir
       file:
@@ -79,3 +66,16 @@
     # warning messages
     - name: Install nvim plugins via Plug
       shell: nvim +PlugInstall! +PlugClean +qall < ansible-install.yml
+
+    ## Vim ##
+    - name: Clone Vundle plugin
+      git:
+        repo: https://github.com/gmarik/Vundle.vim.git
+        dest: "{{ home_dir }}/.vim/bundle/Vundle.vim"
+        version: master
+        accept_hostkey: yes
+
+    # Silly trick: redirect a file as input to Vim so that it gets past the
+    # warning messages
+    - name: Install Vim plugins via Vundle
+      shell: vim +PluginInstall! +PluginClean +qall < ansible-install.yml
