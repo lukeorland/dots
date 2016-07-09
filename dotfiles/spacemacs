@@ -119,6 +119,7 @@ values."
 
      html
      javascript
+     react
 
      ;; django
      ;; ipython-notebook
