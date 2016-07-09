@@ -82,6 +82,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias vim=nvim
 
 # Install wheels only from the wheelhouse.
 alias pipwhl='pip install --no-index --find-links="$WHEELHOUSE"'
