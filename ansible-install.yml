@@ -5,6 +5,7 @@
   vars:
     - dotfiles:
         - boot
+        - config/nvim
         - gitconfig
         - gitignore
         - jsbeautifyrc
@@ -50,6 +51,7 @@
         state: link
       with_items: dotfiles
 
+    ## Vim ##
     - name: Clone Vundle plugin
       git:
         repo: https://github.com/gmarik/Vundle.vim.git
@@ -61,3 +63,19 @@
     # warning messages
     - name: Install Vim plugins via Vundle
       shell: vim +PluginInstall! +PluginClean +qall < ansible-install.yml
+
+    ## NVim ##
+    - name: Create nvim autoload dir
+      file:
+        path: "{{ home_dir }}/.config/nvim/autoload"
+        state: directory
+
+    - name: Install vim-plug plugin to nvim
+      get_url:
+        url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        dest: "{{ home_dir }}/.config/nvim/autoload/plug.vim"
+
+    # Silly trick: redirect a file as input to Vim so that it gets past the
+    # warning messages
+    - name: Install nvim plugins via Plug
+      shell: nvim +PlugInstall! +PlugClean +qall < ansible-install.yml
