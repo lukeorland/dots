@@ -360,7 +360,7 @@ layers configuration. You are free to put any user code."
   (setq diff-hl-side 'left)
 
   ;; Spaceline ;;
-  (setq powerline-default-separator nil)
+  (setq powerline-default-separator 'bar)
   (spaceline-compile)
 
   ;; Python ;;
