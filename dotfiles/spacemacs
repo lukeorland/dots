@@ -347,8 +347,6 @@ any user code here.  The exception is org related code, which should be placed
 in `dotspacemacs/user-config'."
 
   (fringe-mode '(1 . 1))
-
-  (shell-dirtrack-mode nil)
   )
 
 (defun dotspacemacs/user-config ()
