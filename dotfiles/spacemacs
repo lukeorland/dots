@@ -374,6 +374,9 @@ layers configuration. You are free to put any user code."
   (setq powerline-default-separator 'bar)
   (spaceline-compile)
 
+  ;; NeoTree ;;
+  (setq neo-theme 'nerd)
+
   ;; Python ;;
   (with-eval-after-load 'python
     ;; Make underscore count as a word character in Python mode:
