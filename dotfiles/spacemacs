@@ -378,7 +378,9 @@ layers configuration. You are free to put any user code."
   ;; Python ;;
   (with-eval-after-load 'python
     ;; Make underscore count as a word character in Python mode:
-    (modify-syntax-entry ?_ "w" python-mode-syntax-table))
+    (modify-syntax-entry ?_ "w" python-mode-syntax-table)
+    (setq python-fill-column 78)
+    )
 
   (with-eval-after-load 'org
     (add-hook 'org-mode-hook 'emoji-cheat-sheet-plus-display-mode)
