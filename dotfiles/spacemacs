@@ -122,7 +122,7 @@ values."
      react
 
      ;; django
-     ;; ipython-notebook
+     ipython-notebook
      (python :variables
              python-auto-set-local-pyenv-version 'on-project-switch
              ;; python-enable-yapf-format-on-save t
