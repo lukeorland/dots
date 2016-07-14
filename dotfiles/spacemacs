@@ -3,22 +3,22 @@
 ;; It must be stored in your home directory.
 
 ;; Fix:
-;; - separate macOS clipboard from yankring
+;; - TODO: `SPC g . n s` staging not available
+;; - TODO: separate macOS clipboard from yankring
 ;;   https://github.com/syl20bnr/spacemacs/issues/6533
-;;
-;; - emoji rendering but showing first colon in org files
-;;
-;; - c-i conflict while editing a Python file. I want it to call
+;; - TODO: emoji rendering but showing first colon in org files
+;; - TODO: start counting columns with 1 instead of 0
+;; - TODO: c-i conflict while editing a Python file. I want it to call
 ;; `evil-jump-forward', but instead it tries some auto-completion, with the
 ;; error message:
-;;
-;; python-completion-complete-at-point: Completion needs an inferior Python process running
-;;
-;; - isort
+;; - TODO: python-completion-complete-at-point: Completion needs an inferior Python process running
+;; - TODO: Add isort to python layer
 ;;   https://github.com/syl20bnr/spacemacs/pull/3701
+;; - TODO: org-habit
+;;   (add-to-list 'org-modules 'org-habit)
 
 ;; Try:
-;; - improve gqq formatting in Python (to use yapf?)
+;; - TODO: improve gqq formatting in Python (to use yapf?)
 
 ;; Necessary?
 ;; (defvar company-mode/enable-yas t
