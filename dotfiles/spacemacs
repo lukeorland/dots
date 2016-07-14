@@ -139,7 +139,7 @@ values."
      spacemacs-layouts
      spell-checking
      search-engine
-     ;; spotify   ;; won't compile 2015-10-18
+     spotify
      syntax-checking
      unimpaired
      (version-control :variables
@@ -384,6 +384,11 @@ layers configuration. You are free to put any user code."
 
   (with-eval-after-load 'org
     (add-hook 'org-mode-hook 'emoji-cheat-sheet-plus-display-mode)
+
+    ;; Play Spotify during a pomo, and pause during break:
+    (add-hook 'org-pomodoro-started-hook 'spotify-play)
+    (add-hook 'org-pomodoro-finished-hook 'spotify-pause)
+    (add-hook 'org-pomodoro-killed-hook 'spotify-pause)
     )
 
   (setenv "LANG" "en_US.UTF-8")
