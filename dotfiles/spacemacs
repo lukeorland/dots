@@ -114,6 +114,8 @@ values."
      pandoc
      ;; perspectives  ;; (using eyebrowse instead)
 
+     (version-control :variables
+                      version-control-diff-tool 'git-gutter+)
      git
      github
 
@@ -142,10 +144,6 @@ values."
      spotify
      syntax-checking
      unimpaired
-     (version-control :variables
-                      version-control-diff-tool 'diff-hl
-                      ;; version-control-global-margin t
-                      )
 
      yaml
      ;; ycmd
@@ -368,7 +366,7 @@ This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
   ;; Gutter/Fringe ;;
-  (setq diff-hl-side 'left)
+  (setq git-gutter-fr+-side 'left-fringe)
 
   ;; Spaceline ;;
   (setq powerline-default-separator 'bar)
