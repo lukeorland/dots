@@ -100,7 +100,6 @@ values."
      clojure
      java
 
-     company-mode
      chrome
      dash
      dockerfile
