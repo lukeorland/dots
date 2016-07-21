@@ -362,6 +362,9 @@ in `dotspacemacs/user-config'."
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
+  ;; Speed up helm-projectile-find-file
+  (setq projectile-enable-caching t)
+
   ;; Gutter/Fringe ;;
   (fringe-mode '(4 . 0))
   (set-face-background 'fringe "black")
