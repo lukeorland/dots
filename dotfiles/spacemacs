@@ -391,6 +391,15 @@ layers configuration. You are free to put any user code."
     (add-hook 'org-pomodoro-started-hook 'spotify-play)
     (add-hook 'org-pomodoro-finished-hook 'spotify-pause)
     (add-hook 'org-pomodoro-killed-hook 'spotify-pause)
+
+    ;; Org settings
+    (setq org-directory "~/.deft/")
+    (setq org-agenda-files '("~/.deft/"))
+
+    (add-to-list 'org-modules 'org-habit)
+
+    (setq org-todo-keywords
+          '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
     )
 
   (setenv "LANG" "en_US.UTF-8")
