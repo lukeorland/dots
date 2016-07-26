@@ -57,18 +57,6 @@
 ;;       (python-shell-switch-to-shell)
 ;;     )
 ;;   )
-;; (with-eval-after-load 'web-mode
-;;   (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
-;;   (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
-;;   (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
-;; ;; js2-mode
-;; js2-basic-offset 2
-;; ;; web-mode
-;; css-indent-offset 2
-;; web-mode-markup-indent-offset 2
-;; web-mode-css-indent-offset 2
-;; web-mode-code-indent-offset 2
-;; web-mode-attr-indent-offset 2
 
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
@@ -355,6 +343,13 @@ values."
 It is called immediately after `dotspacemacs/init'.  You are free to put almost
 any user code here.  The exception is org related code, which should be placed
 in `dotspacemacs/user-config'."
+  (setq-default js2-basic-offset 2
+                js-indent-level 2
+                css-indent-offset 2
+                web-mode-markup-indent-offset 2
+                web-mode-css-indent-offset 2
+                web-mode-code-indent-offset 2
+                web-mode-attr-indent-offset 2)
   )
 
 (defun dotspacemacs/user-config ()
@@ -408,6 +403,11 @@ layers configuration. You are free to put any user code."
   (setq vc-follow-symlinks t)
 
   (setq neo-show-hidden-files nil)
+
+  (with-eval-after-load 'web-mode
+    (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
