@@ -6,6 +6,7 @@
     - dotfiles:
         - boot
         - config/nvim
+        - eslintrc
         - gitconfig
         - gitignore
         - jsbeautifyrc
