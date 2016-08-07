@@ -398,6 +398,8 @@ layers configuration. You are free to put any user code."
 
     (setq org-todo-keywords
           '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
+
+    (setq org-pomodoro-long-break-length 5)
     )
 
   (setenv "LANG" "en_US.UTF-8")
