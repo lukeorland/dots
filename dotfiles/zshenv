@@ -7,9 +7,9 @@ export PYENV_ROOT=/usr/local/opt/pyenv
 
 eval "$(rbenv init - --no-rehash)"
 
-export NVM_DIR=$HOME/.nvm
-#source $(brew --prefix nvm)/nvm.sh --no-use
-source /usr/local/opt/nvm/nvm.sh --no-use
+# export NVM_DIR=$HOME/.nvm
+# source $(brew --prefix nvm)/nvm.sh --no-use
+# source /usr/local/opt/nvm/nvm.sh --no-use
 
 # Where pip wheel should store built packages.
 export WHEELHOUSE=~/.cache/wheelhouse
