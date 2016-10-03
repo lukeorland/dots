@@ -9,6 +9,7 @@
         - eslintrc
         - gitconfig
         - gitignore
+        - hammerspoon
         - jsbeautifyrc
         - lein
         - matplotlib
