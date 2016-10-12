@@ -468,8 +468,6 @@ you should place your code here."
     (setq org-directory "~/.deft/")
     (setq org-agenda-files '("~/.deft/"))
 
-    (setq deft-auto-save-interval 0)
-
     (add-to-list 'org-modules 'org-habit)
 
     (setq org-todo-keywords
