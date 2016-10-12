@@ -471,11 +471,13 @@ you should place your code here."
     (add-to-list 'org-modules 'org-habit)
 
     (setq org-todo-keywords
-          '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
+          '((sequence "TODO(t)" "NEXT(n)" "IN-PROGRESS(p)" "WAITING(w@/!)" "MAYBE(m)" "|" "DONE(d!)" "CANCELED(c@)")))
 
     (setq org-tag-alist '(("opensprints" . ?o) ("newsela" . ?n) ("@home" . ?h) ("laptop" . ?l) ("@errand" . ?e)))
 
     (setq org-pomodoro-long-break-length 5)
+
+    ;; (add-hook 'org-mode-hook (lambda nil (load-theme-buffer-local 'leuven (current-buffer))))
     )
 
   (setenv "LANG" "en_US.UTF-8")
